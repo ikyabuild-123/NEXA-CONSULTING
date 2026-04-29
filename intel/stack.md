@@ -20,4 +20,6 @@
 | LinkedIn | Business development and social presence | Not yet |
 
 ## MCP Servers Connected
-None in use for this command centre.
+| Server | Type | Status |
+|--------|------|--------|
+| Zapier | HTTP | Connected — token stored in user-level settings |

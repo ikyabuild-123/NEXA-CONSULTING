@@ -13,4 +13,4 @@ Short paragraphs. Straight to the point. Use bullets only when listing genuinely
 - No tech jargon — if it needs a glossary entry, rephrase it
 - No filler — cut anything that doesn't add information
 - No padding — if it can be said in one sentence, use one sentence
-- No corporate speak — "leverage", "synergise", "circle back" are banned
+- No corporate speak — "leverage", "synergise" are banned ("circle back" is fine — Ikram uses it naturally)

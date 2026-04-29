@@ -3,8 +3,8 @@
 *Updated at the end of each session. Read this FIRST on startup.*
 
 ## Last Session
-- **Date:** 2026-04-15
-- **Summary:** EA command centre setup complete. Onboarding finished across all 6 sections.
+- **Date:** 2026-04-29
+- **Summary:** Updated Zapier MCP token in project-level mcp.json (HTTP transport). Gmail, Google Sheets, and Google Docs are configured as actions in Zapier and will be accessible via the same MCP connection. mcp.json is gitignored. Pending: reload Claude Code and run /mcp to confirm Zapier is live.
 
 ## Open Tasks
 - Define Q2 2026 quarterly goals with Ikram
