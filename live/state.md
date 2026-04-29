@@ -4,7 +4,7 @@
 
 ## Last Session
 - **Date:** 2026-04-29
-- **Summary:** Updated Zapier MCP token in project-level mcp.json (HTTP transport). Gmail, Google Sheets, and Google Docs are configured as actions in Zapier and will be accessible via the same MCP connection. mcp.json is gitignored. Pending: reload Claude Code and run /mcp to confirm Zapier is live.
+- **Summary:** Zapier MCP confirmed connected by Ikram. Tools (Google Sheets, Gmail, etc.) are configured in Zapier and tied to the URL in mcp.json. MCP tools didn't load this session because the session predated the config. Next session: restart Claude Code so Zapier tools load, then run the pipeline morning summary (leads by stage, total deal value for active stages, top 3 hottest leads with this-week next steps).
 
 ## Open Tasks
 - Define Q2 2026 quarterly goals with Ikram
