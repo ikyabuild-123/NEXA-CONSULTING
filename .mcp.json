@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "zapier": {
+      "type": "http",
+      "url": "https://mcp.zapier.com/api/v1/connect?token=OGM0YTBmNmEtNTYzOS00NGZiLWE0NDItMzYyZTk2NmRmY2UwOkM4aGRrT3RwcnZhODNZYXJRcCtFTjFXVEExV29STWhhb3ZhSGNWc09YYzg9"
+    }
+  }
+}

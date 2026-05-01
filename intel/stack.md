@@ -22,4 +22,7 @@
 ## MCP Servers Connected
 | Server | Type | Status |
 |--------|------|--------|
-| Zapier | HTTP | Connected — token stored in user-level settings |
+| Google Drive | — | Connected |
+| Zapier | HTTP | Configured — pending restart to activate |
+
+**Zapier config location:** `.mcp.json` at project root. Token updated 2026-05-01.
