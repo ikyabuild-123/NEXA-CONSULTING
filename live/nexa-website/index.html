@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEXA — Free Operations Audit | AI Workflows for Morocco SMEs</title>
+  <meta name="description" content="Stop losing 3+ hours daily to manual work. Book your free 30-minute audit. NEXA builds custom AI workflows for Morocco SMEs.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --dark:         #070413;
+      --dark-2:       #0E0926;
+      --dark-card:    #130D30;
+      --purple:       #8B5CF6;
+      --purple-vivid: #7C3AED;
+      --purple-pale:  #C4B5FD;
+      --purple-dim:   rgba(139,92,246,0.12);
+      --purple-rim:   rgba(139,92,246,0.22);
+      --white:        #FFFFFF;
+      --off-white:    #F9F8FF;
+      --tint:         #F3EFFF;
+      --text:         #08040F;
+      --muted:        #5E5780;
+      --subtle:       #9590AA;
+      --t-light:      #EDE8FB;
+      --t-dim:        #7D7399;
+      --border:       #DDD8F0;
+      --border-d:     rgba(255,255,255,0.07);
+      --max-w:        1120px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--dark);
+      color: var(--t-light);
+      font-family: 'Outfit', system-ui, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .wrap {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 100;
+      padding: 20px 0;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    nav.on {
+      background: rgba(7,4,19,0.94);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 1px 0 var(--border-d);
+    }
+    .nav-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-family: 'Outfit', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      color: var(--purple-pale);
+      text-decoration: none;
+    }
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--purple);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 10px 22px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    }
+    .nav-btn:hover { background: var(--purple-vivid); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(139,92,246,0.35); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      padding: 144px 0 108px;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(139,92,246,0.09) 1px, transparent 1px);
+      background-size: 32px 32px;
+      mask-image: radial-gradient(ellipse 65% 65% at 80% 25%, black 0%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse 65% 65% at 80% 25%, black 0%, transparent 70%);
+    }
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .orb-a { width: 800px; height: 800px; top: -280px; right: -200px; background: radial-gradient(circle, rgba(139,92,246,0.13) 0%, transparent 65%); }
+    .orb-b { width: 480px; height: 480px; bottom: -120px; left: -100px; background: radial-gradient(circle, rgba(139,92,246,0.06) 0%, transparent 65%); }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--purple-pale);
+      margin-bottom: 28px;
+    }
+    .eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--purple-pale); }
+
+    h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(46px, 5.8vw, 80px);
+      font-weight: 800;
+      line-height: 1.01;
+      letter-spacing: -0.025em;
+      color: var(--t-light);
+      margin-bottom: 28px;
+    }
+    h1 em { font-style: normal; color: var(--purple-pale); }
+
+    .hero-sub {
+      font-size: clamp(15px, 1.2vw, 17px);
+      font-weight: 300;
+      line-height: 1.76;
+      color: var(--t-dim);
+      max-width: 460px;
+      margin-bottom: 44px;
+    }
+
+    .cta-row { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--purple);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 14px 28px;
+      border-radius: 4px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      font-family: 'Outfit', sans-serif;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.25s;
+    }
+    .btn:hover { background: var(--purple-vivid); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(139,92,246,0.38); }
+    .btn-ghost { background: none; border: 1px solid var(--border-d); color: var(--t-dim); }
+    .btn-ghost:hover { background: rgba(255,255,255,0.04); border-color: var(--purple-rim); color: var(--t-light); box-shadow: none; }
+    .btn-full { width: 100%; justify-content: center; font-size: 15px; padding: 16px; }
+
+    /* time card */
+    .time-card {
+      background: var(--dark-card);
+      border: 1px solid var(--purple-rim);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 0 0 1px rgba(139,92,246,0.05), 0 28px 72px rgba(0,0,0,0.55);
+    }
+    .tc-head {
+      background: var(--purple-dim);
+      border-bottom: 1px solid var(--purple-rim);
+      padding: 13px 22px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .tc-dots { display: flex; gap: 6px; }
+    .tcd { width: 8px; height: 8px; border-radius: 50%; background: var(--border-d); }
+    .tc-title { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--purple-pale); }
+    .tc-body { padding: 24px 22px; }
+    .tc-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding: 11px 0;
+      border-bottom: 1px solid var(--border-d);
+    }
+    .tc-row:last-child { border-bottom: none; }
+    .tc-label { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--t-dim); }
+    .tc-val { font-family: 'Outfit', sans-serif; font-size: 24px; font-weight: 800; color: var(--purple-pale); letter-spacing: -0.02em; }
+    .tc-unit { font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 400; color: var(--t-dim); margin-left: 4px; }
+    .tc-foot {
+      background: rgba(139,92,246,0.07);
+      border-top: 1px solid var(--purple-rim);
+      padding: 13px 22px;
+      font-size: 12px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--t-dim);
+      line-height: 1.5;
+    }
+
+    /* hero stagger */
+    .ha { opacity: 0; transform: translateY(22px); animation: rise 0.8s cubic-bezier(0.16,1,0.3,1) forwards; }
+    .ha-1 { animation-delay: 0.08s; }
+    .ha-2 { animation-delay: 0.18s; }
+    .ha-3 { animation-delay: 0.30s; }
+    .ha-4 { animation-delay: 0.42s; }
+    .ha-5 { animation-delay: 0.52s; }
+    @keyframes rise { to { opacity: 1; transform: none; } }
+
+    /* ── SECTION SHARED ── */
+    .section { padding: 96px 0; }
+    .section-label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 18px;
+    }
+    .section-label.light { color: var(--purple-pale); }
+    .s-h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(30px, 3.8vw, 50px);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+      color: var(--text);
+      margin-bottom: 14px;
+    }
+    .s-h2 em { font-style: normal; color: var(--purple); }
+    .s-h2.light { color: var(--t-light); }
+    .s-h2.light em { color: var(--purple-pale); }
+    .s-sub {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.72;
+      color: var(--muted);
+      max-width: 520px;
+      margin-bottom: 52px;
+    }
+    .s-sub.light { color: var(--t-dim); }
+
+    /* scroll reveal */
+    .up { opacity: 0; transform: translateY(28px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+    .up.in { opacity: 1; transform: none; }
+    .d1 { transition-delay: 0.08s; }
+    .d2 { transition-delay: 0.16s; }
+    .d3 { transition-delay: 0.24s; }
+
+    /* ── PAIN ── */
+    .pain { background: var(--white); }
+
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--border);
+      gap: 1px;
+      background: var(--border);
+      margin-bottom: 32px;
+    }
+    .pain-card {
+      background: var(--white);
+      padding: 40px 34px;
+      transition: background 0.25s;
+    }
+    .pain-card:hover { background: var(--tint); }
+    .pain-num {
+      font-family: 'Outfit', sans-serif;
+      font-size: 52px;
+      font-weight: 800;
+      color: var(--border);
+      line-height: 1;
+      margin-bottom: 18px;
+      transition: color 0.3s;
+    }
+    .pain-card:hover .pain-num { color: rgba(139,92,246,0.18); }
+    .pain-title { font-family: 'Outfit', sans-serif; font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 10px; letter-spacing: -0.01em; }
+    .pain-text { font-size: 14.5px; font-weight: 300; line-height: 1.72; color: var(--muted); }
+
+    .callout {
+      padding: 22px 28px;
+      background: var(--tint);
+      border-left: 3px solid var(--purple);
+      font-size: 15.5px;
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .callout strong { color: var(--purple); }
+
+    /* ── SOLUTION ── */
+    .solution { background: var(--off-white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+    .sol-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .sol-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 34px 30px;
+      transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+    }
+    .sol-card:hover { border-color: var(--purple); box-shadow: 0 8px 32px rgba(139,92,246,0.10); transform: translateY(-4px); }
+    .sol-icon {
+      width: 40px; height: 40px;
+      background: var(--tint);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--purple);
+      margin-bottom: 20px;
+    }
+    .sol-title { font-family: 'Outfit', sans-serif; font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 10px; letter-spacing: -0.01em; }
+    .sol-text { font-size: 14.5px; font-weight: 300; line-height: 1.72; color: var(--muted); }
+
+    /* ── PROCESS ── */
+    .process { background: var(--white); }
+
+    .proc-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      margin-top: 52px;
+      position: relative;
+    }
+    .proc-grid::before {
+      content: '';
+      position: absolute;
+      top: 27px;
+      left: calc(100% / 6 + 8px);
+      right: calc(100% / 6 + 8px);
+      height: 1px;
+      background: var(--border);
+    }
+    .proc-step { padding: 0 28px; text-align: center; }
+    .proc-step:first-child { padding-left: 0; }
+    .proc-step:last-child  { padding-right: 0; }
+
+    .proc-circle {
+      width: 54px; height: 54px;
+      border: 1px solid var(--border);
+      background: var(--white);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+      position: relative; z-index: 1;
+      transition: border-color 0.25s, background 0.25s;
+    }
+    .proc-step:hover .proc-circle { border-color: var(--purple); background: var(--tint); }
+    .proc-num { font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 800; color: var(--purple); }
+    .proc-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--purple);
+      background: var(--tint);
+      padding: 3px 10px;
+      border-radius: 100px;
+      margin-bottom: 10px;
+    }
+    .proc-title { font-family: 'Outfit', sans-serif; font-size: 19px; font-weight: 800; color: var(--text); margin-bottom: 10px; letter-spacing: -0.01em; }
+    .proc-text  { font-size: 14.5px; font-weight: 300; line-height: 1.72; color: var(--muted); }
+
+    /* ── FORM ── */
+    .form-sect {
+      position: relative;
+      background: var(--dark);
+      padding: 100px 0;
+      overflow: hidden;
+    }
+    .form-sect::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(139,92,246,0.07) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+    .form-orb {
+      position: absolute;
+      top: -150px; left: 50%; transform: translateX(-50%);
+      width: 700px; height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(139,92,246,0.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .form-grid {
+      position: relative; z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .form-h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(32px, 4.2vw, 54px);
+      font-weight: 800;
+      line-height: 1.06;
+      letter-spacing: -0.03em;
+      color: var(--t-light);
+      margin-bottom: 18px;
+    }
+    .form-h2 em { font-style: normal; color: var(--purple-pale); }
+
+    .form-sub { font-size: 16px; font-weight: 300; line-height: 1.72; color: var(--t-dim); margin-bottom: 36px; }
+
+    .trust-list { display: flex; flex-direction: column; gap: 12px; }
+    .trust-item { display: flex; align-items: center; gap: 12px; font-size: 14px; font-weight: 400; color: var(--t-dim); }
+    .trust-icon {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background: var(--purple-dim);
+      border: 1px solid var(--purple-rim);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; color: var(--purple-pale);
+    }
+
+    /* Form card */
+    .form-card {
+      background: var(--dark-card);
+      border: 1px solid var(--purple-rim);
+      border-radius: 8px;
+      padding: 38px;
+    }
+    .form-group { margin-bottom: 18px; }
+    label {
+      display: block;
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--t-dim);
+      margin-bottom: 7px;
+    }
+    input, select {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border-d);
+      border-radius: 4px;
+      padding: 12px 15px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      color: var(--t-light);
+      outline: none;
+      -webkit-appearance: none;
+      appearance: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    input::placeholder { color: var(--t-dim); opacity: 0.6; }
+    input:focus, select:focus { border-color: var(--purple); background: rgba(139,92,246,0.06); }
+    select { cursor: pointer; }
+    select option { background: var(--dark-2); color: var(--t-light); }
+
+    .form-note { text-align: center; font-size: 12px; color: var(--t-dim); margin-top: 12px; }
+    .form-err  { font-size: 11px; color: #F87171; margin-top: 5px; display: none; }
+
+    /* Success state */
+    .success-state { display: none; text-align: center; padding: 40px 20px; }
+    .success-state.show { display: block; }
+    .form-fields.hide { display: none; }
+
+    .check-circle {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: rgba(139,92,246,0.14);
+      border: 1px solid var(--purple-rim);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 18px;
+      color: var(--purple-pale);
+    }
+    .success-title { font-family: 'Outfit', sans-serif; font-size: 22px; font-weight: 800; color: var(--t-light); margin-bottom: 10px; }
+    .success-sub   { font-size: 14px; font-weight: 300; color: var(--t-dim); line-height: 1.65; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid var(--border-d);
+      padding: 26px 0;
+    }
+    .foot-inner { display: flex; align-items: center; justify-content: space-between; }
+    .foot-logo { font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 800; letter-spacing: 0.12em; color: var(--purple-pale); }
+    .foot-tag  { font-size: 12px; color: var(--t-dim); }
+    .foot-copy { font-size: 12px; color: var(--t-dim); opacity: 0.5; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 52px; }
+      .time-card { max-width: 440px; }
+    }
+    @media (max-width: 860px) {
+      .pain-grid   { grid-template-columns: 1fr; }
+      .sol-grid    { grid-template-columns: 1fr 1fr; }
+      .proc-grid   { grid-template-columns: 1fr; gap: 40px; }
+      .proc-grid::before { display: none; }
+      .proc-step   { text-align: left !important; padding: 0; }
+      .proc-circle { margin: 0 0 18px; }
+      .form-grid   { grid-template-columns: 1fr; gap: 48px; }
+    }
+    @media (max-width: 640px) {
+      .wrap, .nav-inner { padding-left: 20px; padding-right: 20px; }
+      .sol-grid  { grid-template-columns: 1fr; }
+      .cta-row   { flex-direction: column; align-items: flex-start; }
+      .foot-inner { flex-direction: column; gap: 8px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a class="logo" href="#">NEXA</a>
+    <a class="nav-btn" href="#audit">Get free audit →</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="orb orb-a"></div>
+  <div class="orb orb-b"></div>
+  <div class="wrap">
+    <div class="hero-grid">
+
+      <div>
+        <span class="eyebrow ha ha-1">Agentic Workflow Agency · Morocco</span>
+        <h1 class="ha ha-2">
+          You're losing hours every day to work that <em>shouldn't need you.</em>
+        </h1>
+        <p class="hero-sub ha ha-3">
+          NEXA maps your operations and builds AI workflows that handle the repetitive work — so you can focus on what actually grows the business.
+        </p>
+        <div class="cta-row ha ha-4">
+          <a class="btn" href="#audit">
+            Get your free audit
+            <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M2.5 7.5h10M8.5 4l3.5 3.5L8.5 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="#how">How it works ↓</a>
+        </div>
+      </div>
+
+      <div class="ha ha-5" aria-hidden="true">
+        <div class="time-card">
+          <div class="tc-head">
+            <div class="tc-dots"><span class="tcd"></span><span class="tcd"></span><span class="tcd"></span></div>
+            <span class="tc-title">Your time — unaccounted</span>
+          </div>
+          <div class="tc-body">
+            <div class="tc-row">
+              <span class="tc-label">Per day</span>
+              <span class="tc-val"><span class="count" data-to="3">0</span><span class="tc-unit">+ hours</span></span>
+            </div>
+            <div class="tc-row">
+              <span class="tc-label">Per month</span>
+              <span class="tc-val"><span class="count" data-to="60">0</span><span class="tc-unit">+ hours</span></span>
+            </div>
+            <div class="tc-row">
+              <span class="tc-label">Per year</span>
+              <span class="tc-val"><span class="count" data-to="720">0</span><span class="tc-unit">hours</span></span>
+            </div>
+          </div>
+          <div class="tc-foot">On emails, admin, data entry, and tasks that don't need you.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── PAIN ── -->
+<section class="section pain">
+  <div class="wrap">
+    <span class="section-label up">Sound familiar?</span>
+    <h2 class="s-h2 up">If you run an SME in Morocco,<br>your time is being <em>eaten alive.</em></h2>
+    <p class="s-sub up">It's not a discipline problem. It's a system that was never built to scale without you.</p>
+
+    <div class="pain-grid up">
+      <div class="pain-card">
+        <p class="pain-num">01</p>
+        <h3 class="pain-title">Your mornings disappear</h3>
+        <p class="pain-text">Emails to sort, follow-ups to send, data to copy across tools. By 11am you haven't done a single hour of actual work.</p>
+      </div>
+      <div class="pain-card">
+        <p class="pain-num">02</p>
+        <h3 class="pain-title">Your tools don't talk</h3>
+        <p class="pain-text">CRM, inbox, calendar, invoicing — none of it connects. So you spend your day bridging systems that should handle it automatically.</p>
+      </div>
+      <div class="pain-card">
+        <p class="pain-num">03</p>
+        <h3 class="pain-title">Every client is manual</h3>
+        <p class="pain-text">Onboarding, contracts, welcome emails, access setup — done by hand, every time. The same 2 hours, repeated for each new client.</p>
+      </div>
+    </div>
+
+    <div class="callout up">
+      This isn't a productivity problem. It's an <strong>automation gap</strong> — and it has a fix.
+    </div>
+  </div>
+</section>
+
+<!-- ── SOLUTION ── -->
+<section class="section solution">
+  <div class="wrap">
+    <span class="section-label up">What we build</span>
+    <h2 class="s-h2 up">We automate the 20% of tasks<br>that eat <em>80% of your time.</em></h2>
+    <p class="s-sub up">Custom AI workflows built for your exact business. Not templates. Not generic tools. Built around how you actually work.</p>
+
+    <div class="sol-grid">
+      <div class="sol-card up">
+        <div class="sol-icon">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="10" cy="10" r="3.5"/><path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.3 4.3l1.4 1.4M14.3 14.3l1.4 1.4M14.3 5.7l1.4-1.4M4.3 15.7l1.4-1.4"/>
+          </svg>
+        </div>
+        <h3 class="sol-title">AI Assistants</h3>
+        <p class="sol-text">A custom AI that handles emails, client questions, and repetitive communications — built around your tone and your business rules.</p>
+      </div>
+      <div class="sol-card up d1">
+        <div class="sol-icon">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="3" width="16" height="5" rx="1"/><rect x="2" y="12" width="16" height="5" rx="1"/><path d="M6 5.5h1M6 14.5h1"/>
+          </svg>
+        </div>
+        <h3 class="sol-title">Smart Workflows</h3>
+        <p class="sol-text">End-to-end automation of your core processes — client onboarding, reporting, follow-ups — running in the background.</p>
+      </div>
+      <div class="sol-card up d2">
+        <div class="sol-icon">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="5" width="16" height="12" rx="1"/><path d="M2 9h16M6 3v4M14 3v4M6 13h4"/>
+          </svg>
+        </div>
+        <h3 class="sol-title">Operations Sync</h3>
+        <p class="sol-text">CRM, inbox, calendar, invoicing — all connected and talking to each other so data moves without you moving it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROCESS ── -->
+<section class="section process" id="how">
+  <div class="wrap">
+    <span class="section-label up">How it works</span>
+    <h2 class="s-h2 up">From audit to <em>automation in days.</em></h2>
+
+    <div class="proc-grid">
+      <div class="proc-step up">
+        <div class="proc-circle"><span class="proc-num">01</span></div>
+        <span class="proc-badge">Free</span>
+        <h3 class="proc-title">Audit</h3>
+        <p class="proc-text">30 minutes. We map your biggest time drains — exactly where you're losing hours and what to fix first.</p>
+      </div>
+      <div class="proc-step up d1">
+        <div class="proc-circle"><span class="proc-num">02</span></div>
+        <span class="proc-badge">Custom</span>
+        <h3 class="proc-title">Build</h3>
+        <p class="proc-text">Workflows built around how you actually work. No templates, no generic tools — built for your exact business.</p>
+      </div>
+      <div class="proc-step up d2">
+        <div class="proc-circle"><span class="proc-num">03</span></div>
+        <span class="proc-badge">Fast</span>
+        <h3 class="proc-title">Launch</h3>
+        <p class="proc-text">Live in days. Hours back every week. No technical setup needed from you — we handle everything.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FORM ── -->
+<section class="form-sect" id="audit">
+  <div class="form-orb"></div>
+  <div class="wrap">
+    <div class="form-grid">
+
+      <div class="up">
+        <span class="section-label light">Free audit</span>
+        <h2 class="form-h2">Book your free<br><em>operations audit.</em></h2>
+        <p class="form-sub">30 minutes. We'll identify exactly where you're losing time and what to automate first. No cost, no obligation.</p>
+        <div class="trust-list">
+          <div class="trust-item">
+            <div class="trust-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            30-minute session — no fluff
+          </div>
+          <div class="trust-item">
+            <div class="trust-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            No technical knowledge needed
+          </div>
+          <div class="trust-item">
+            <div class="trust-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            You'll leave with a clear action plan
+          </div>
+          <div class="trust-item">
+            <div class="trust-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            Zero commitment to continue
+          </div>
+        </div>
+      </div>
+
+      <div class="up d1">
+        <div class="form-card">
+          <form id="lead-form" novalidate>
+            <div class="form-fields" id="form-fields">
+              <div class="form-group">
+                <label for="f-name">Full name</label>
+                <input type="text" id="f-name" name="name" placeholder="Your name" required autocomplete="name">
+                <p class="form-err" id="err-name">Please enter your name.</p>
+              </div>
+              <div class="form-group">
+                <label for="f-email">Email address</label>
+                <input type="email" id="f-email" name="email" placeholder="you@company.com" required autocomplete="email">
+                <p class="form-err" id="err-email">Please enter a valid email.</p>
+              </div>
+              <div class="form-group">
+                <label for="f-challenge">Biggest time drain</label>
+                <select id="f-challenge" name="challenge" required>
+                  <option value="" disabled selected>Select your main challenge</option>
+                  <option value="client-comms">Client communications &amp; follow-up</option>
+                  <option value="admin">Admin &amp; data entry</option>
+                  <option value="onboarding">Client onboarding</option>
+                  <option value="reporting">Reporting &amp; updates</option>
+                  <option value="other">Something else</option>
+                </select>
+                <p class="form-err" id="err-challenge">Please select an option.</p>
+              </div>
+              <div class="form-group" style="margin-bottom:6px;">
+                <button type="submit" class="btn btn-full" id="submit-btn">
+                  Book my free audit →
+                </button>
+              </div>
+              <p class="form-note">No cost. No commitment. Just clarity.</p>
+            </div>
+            <div class="success-state" id="success-state">
+              <div class="check-circle">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <p class="success-title">You're booked.</p>
+              <p class="success-sub">We've received your request and will be in touch within 24 hours to schedule your free audit.</p>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="wrap">
+    <div class="foot-inner">
+      <span class="foot-logo">NEXA</span>
+      <span class="foot-tag">Agentic Workflows · Morocco</span>
+      <span class="foot-copy">© 2026 NEXA CONSULTING</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Nav
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => { nav.classList.toggle('on', scrollY > 40); }, { passive: true });
+
+  // Scroll reveal
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.up').forEach(el => io.observe(el));
+
+  // Counter animation
+  function runCounter(el) {
+    const target = +el.dataset.to, dur = 1400, t0 = performance.now();
+    const ease = p => 1 - Math.pow(1 - p, 3);
+    const tick = now => {
+      const p = Math.min((now - t0) / dur, 1);
+      el.textContent = Math.round(ease(p) * target);
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+  const cardObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.querySelectorAll('.count').forEach(runCounter); cardObs.unobserve(e.target); }
+    });
+  }, { threshold: 0.5 });
+  const card = document.querySelector('.time-card');
+  if (card) cardObs.observe(card);
+
+  // Form
+  // SETUP: create a free account at formspree.io → New Form → paste your form ID below.
+  // The form will fall back to mailto: if no ID is set.
+  const FORMSPREE = 'YOUR_FORM_ID';
+
+  document.getElementById('lead-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const name      = this['name'].value.trim();
+    const email     = this['email'].value.trim();
+    const challenge = this['challenge'].value;
+    let valid = true;
+
+    const show = (id, cond) => {
+      const err = document.getElementById(id);
+      err.style.display = cond ? 'none' : 'block';
+      if (!cond) valid = false;
+    };
+
+    show('err-name',      name.length > 0);
+    show('err-email',     /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email));
+    show('err-challenge', challenge !== '');
+    if (!valid) return;
+
+    const btn = document.getElementById('submit-btn');
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+
+    let ok = false;
+
+    if (FORMSPREE !== 'YOUR_FORM_ID') {
+      try {
+        const r = await fetch(`https://formspree.io/f/${FORMSPREE}`, {
+          method: 'POST', body: new FormData(this), headers: { Accept: 'application/json' }
+        });
+        ok = r.ok;
+      } catch (_) {}
+    }
+
+    if (!ok) {
+      const s = encodeURIComponent, body = s(`Name: ${name}\nEmail: ${email}\nChallenge: ${challenge}`);
+      window.location.href = `mailto:ikya.build@gmail.com?subject=${s('Free Audit Request — ' + name)}&body=${body}`;
+      ok = true;
+    }
+
+    if (ok) {
+      document.getElementById('form-fields').classList.add('hide');
+      document.getElementById('success-state').classList.add('show');
+    } else {
+      btn.textContent = 'Book my free audit →';
+      btn.disabled = false;
+    }
+  });
+
+  document.querySelectorAll('input, select').forEach(el => {
+    el.addEventListener('change', () => { el.style.borderColor = ''; });
+  });
+</script>
+</body>
+</html>
