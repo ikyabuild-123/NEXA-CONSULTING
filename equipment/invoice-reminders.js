@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
-const INVOICES_FILE = path.join(ROOT, '.tmp', 'invoices.json');
+const INVOICES_FILE = path.join(ROOT, 'data', 'invoices.json');
 const OUTPUT_FILE = path.join(ROOT, '.tmp', 'reminder-queue.json');
 
 const daysArg = process.argv.indexOf('--days');
